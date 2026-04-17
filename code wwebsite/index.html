@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LandHub AI</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="app-container">
+
+  <div id="buyerView" class="view-section active">
+    
+    <div id="listingDisplay" class="scrollable-feed">
+      </div>
+
+    <div id="emptyState" style="display: none; text-align: center; margin-top: 50px;">
+      <h2>No listings available.</h2>
+      <p style="color: #9ca3af;">Check back later or add one as a seller!</p>
+    </div>
+
+  </div>
+
+  <div id="sellerView" class="view-section">
+    <div class="seller-header">
+      <h2>Add New Lot Listing</h2>
+      <p>Fill out the details below to list your property.</p>
+    </div>
+
+    <div class="form-container">
+      <div class="form-group">
+        <label>Property Title / Location Name</label>
+        <input type="text" id="lotTitle" placeholder="e.g. Prime Corner Lot in Davao">
+      </div>
+      
+      <div class="form-group">
+        <label>Seller Full Name</label>
+        <input type="text" id="sellerName" placeholder="Juan Dela Cruz">
+      </div>
+
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" id="sellerNumber" placeholder="+63 9xx xxx xxxx">
+      </div>
+
+      <div class="form-group">
+        <label>House/Lot Location (Optional)</label>
+        <input type="text" id="lotLocation" placeholder="Specific address or landmark">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Selling Price (₱)</label>
+          <input type="number" id="lotPrice" placeholder="500000" oninput="calculateCommission()">
+        </div>
+        <div class="form-group">
+          <label>Land Area (sqm)</label>
+          <input type="number" id="lotArea" placeholder="500">
+        </div>
+      </div>
+
+      <div class="form-group highlight-box">
+        <label>Platform Commission (1%)</label>
+        <p class="sub-label">This is the required fee payable to the platform upon successful sale.</p>
+        <input type="text" id="lotCommission" readonly placeholder="₱0.00" class="readonly-input">
+      </div>
+
+      <div class="form-group">
+        <label>Upload Images (Min 4, Max 10)</label>
+        <input type="file" id="lotImages" accept="image/*" multiple>
+        <p id="imageCount" style="font-size: 12px; color: #ef4444; margin-top: 5px;"></p>
+      </div>
+
+      <button class="primary-btn mt-3" onclick="submitListing()">Publish Listing</button>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <div class="nav-item active" id="navBuyer" onclick="switchTab('buyer')">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <span>Buyer</span>
+    </div>
+    <div class="nav-item" id="navSeller" onclick="switchTab('seller')">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Seller (Add)</span>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
